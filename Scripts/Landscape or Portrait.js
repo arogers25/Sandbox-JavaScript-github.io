@@ -1,1 +1,1 @@
-console.log("You made it to Landscape or Portrait.js")
+console.log("You made it to Landscape or Portrait.js");
