@@ -1,6 +1,24 @@
-console.log("You made it to the template.js!");
+console.log("You made it to the Max of Two Numbers.js!");
+
+let stop = false;
 
 function main()
 {
-  document.getElementById("validityTest1").innerHTML = alert ("You are connected");
+  let firstNumber = document.getElementById("textField1").value;
+  let secondNumber = document.getElementById("textField2").value;
+  //document.getElementById("CanBeAnything").innerHTML = alert ("You are Connected");
+  document.getElementById("validityTest1").innerHTML = testNaN (firstNumber);
+  document.getElementById("validityTest2").innerHTML = testNaN (secondNumber);
 }//End main()
+//
+function testNaN (number)
+{
+  if ( isNaN(number) ) //Returns a Boolean
+  {
+    stop = true;
+    return "Type a Real Number";
+  } else
+  {
+    return "Good. It is a number.";
+  }
+}//end testNaN
