@@ -13,7 +13,7 @@ function main()
 //
 function testNaN (number)
 {
-  if ( number == null ) //Returns a Boolean
+  if ( isNaN(number) ) //Returns a Boolean
   {
     stop = true;
     return "Type a Real Number";
