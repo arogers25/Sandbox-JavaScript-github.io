@@ -9,10 +9,24 @@ function main()
   //document.getElementById("CanBeAnything").innerHTML = alert ("You are Connected");
   document.getElementById("validityTest1").innerHTML = testNaN (firstNumber);
   document.getElementById("validityTest2").innerHTML = testNaN (secondNumber);
+  if (stop == true)
+  {
+    document.getElementById("answer").innerHTML = "Restart ... because I said so.";
+  } else
+  {
+    document.getElementById("answer").innerHTML = "What did you say?" + solution(firstNumber, secondNumber);
+  } //End stop=true
 }//End main()
 //
 function testNaN (number)
 {
+  if (number == "") //Checking for null, submit-button misfire
+  //Variable returns empty string, not null
+  {
+    stop = true;
+    return "Please type a number into the textfield";
+  }//End null check
+  //
   if ( isNaN(number) ) //Returns a Boolean
   {
     stop = true;
