@@ -2,6 +2,8 @@ console.log("You made it to Ordering Grades.js");
 
 let stop = false; //Boolean for testNaN() validation function, see end of file
 let gradesEntered = false; //if at least 1 grade has been entered
+let validGrades = 0; // The amount of real grades that have been entered for the mean
+let addedGrade = 0; // The combined total of every grade for the mean
 
 function javascript () { //Where colsole.log tested file goes
 
@@ -25,14 +27,32 @@ function testGrade (grade)
     stop = true;
     return "Grade must be 100 or lower";
   }
+  validGrades++;
+  addedGrade += parseInt(grade);
   gradesEntered = true;
   return "Valid Grade";
 }//end testGrade
+//
+function gradeLetter (mean)
+{
+  if (mean < 60)
+    return 'F';
+  if (mean < 70)
+    return 'D';
+  if (mean < 80)
+    return 'C';
+  if (mean < 90)
+    return 'B';
+
+  return 'A';
+} // end gradeLetter
 //
 //Main Function, necessary lines of code
 function main() {
   stop = false;
   gradesEntered = false;
+  validGrades = 0;
+  addedGrade = 0;
   let grade1, grade2, grade3, grade4, grade5; //Variables particular to JavsScript Assignment
   //Get the value of the Heighth Input Field, id="testfield1", assign it to a variable
   grade1 = document.getElementById("textField1").value;
@@ -46,12 +66,22 @@ function main() {
   document.getElementById("gradeLabel3").innerHTML = testGrade(grade3);
   document.getElementById("gradeLabel4").innerHTML = testGrade(grade4);
   document.getElementById("gradeLabel5").innerHTML = testGrade(grade5);
+  if (gradesEntered == false)
+    stop = true;
+
   if (stop == true) {
-      alert("Please re-enter your values");
+    if (gradesEntered == false) //Done twice to prevent an unentered grade from coming out as NaN%
+    {
+      alert("Please enter at least one grade");
     } else {
-      if (gradesEntered == false) alert("Please enter at least one grade"); //to prevent multiple alerts
+      alert("Please re-enter your values");
+    }
+      document.getElementById("answer").innerHTML = "Unknown";
+    } else {
       //Difference between calling functions with arguements and sending to parameter's, local variables
-      console.log("What did you say?", javaScriptFunction-Solution (firstNumber, secondNumber)); // Change to more appropriate message
-      document.getElementById("answer").innerHTML = "What did you say? " + geometry (firstNumber, secondNumber);
+      //alert(validGrades);
+      //console.log("What did you say?", javaScriptFunction-Solution (firstNumber, secondNumber)); // Change to more appropriate message
+      let meanGrade = addedGrade / validGrades;
+      document.getElementById("answer").innerHTML = gradeLetter(meanGrade) + " (" + meanGrade + "%) ";
     }
 } //End main()
