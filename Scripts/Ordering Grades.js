@@ -28,7 +28,7 @@ function testGrade (grade)
     return "Grade must be 100 or lower";
   }
   validGrades++;
-  addedGrade += parseInt(grade);
+  addedGrade += parseInt(grade); // ??
   gradesEntered = true;
   return "Valid Grade";
 }//end testGrade
