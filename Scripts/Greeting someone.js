@@ -41,10 +41,10 @@ function testTime(hours, mins)
     }
     if ((mins + " ").length != 3)
     {
-      // Parsing a number that is just 2 zeroes returns a length of 1 and toString().length does not work on mins for some reason
+      // Parsing a number that is just 2 zeros returns a length of 1 and toString().length does not work on mins for some reason
       // This converts mins to a string by adding a space and checks if it is a 2 digit number
       stop = true;
-      return "Minutes need to be 2 digits"
+      return "Minutes need to be 2 digits";
     }
     if (mins < 0 || mins > 59)
     {
@@ -75,7 +75,7 @@ function main() {
       alert(validTime);
       document.getElementById("answer").innerHTML = "???"
     } else {
-      if (amCheck && firstNumber == 12) firstNumber = 0
+      if (amCheck && firstNumber == 12) firstNumber = 0;
       if (pmCheck && firstNumber < 12) firstNumber = parseInt(firstNumber)+12; //Convert the hours to 23 hour time
       document.getElementById("answer").innerHTML = findGreeting(firstNumber, secondNumber);
     }
